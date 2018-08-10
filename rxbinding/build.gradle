@@ -1,0 +1,17 @@
+apply plugin: "maven-publish"
+
+configurations.maybeCreate("default")
+def publishArtifact = artifacts.add("default", file('rxbinding-2.1.1.aar'))
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId = 'my.sample.artifact'
+            artifactId = 'somerandomname'
+            version = '1.0.0'
+            artifact publishArtifact
+        }
+    }
+}
+
+
